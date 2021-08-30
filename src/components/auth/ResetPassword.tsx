@@ -1,7 +1,8 @@
 import { FormEventHandler, useRef, useState } from "react";
 import { Alert, Button, Card, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { useAuth } from "../contexts/AuthContext";
+import { useAuth } from "../../contexts/AuthContext";
+import CenteredContainer from "./CenteredContainer";
 
 export default function ResetPassword() {
     const emailRef = useRef<HTMLInputElement>(null);
@@ -28,7 +29,7 @@ export default function ResetPassword() {
     }
 
     return (
-        <>
+        <CenteredContainer>
             <Card>
                 <Card.Body>
                     <h2 className="text-center mb-4">Password Reset</h2>
@@ -52,6 +53,6 @@ export default function ResetPassword() {
             <div className="w-100 text-center mt-2">
                 Need an account? <Link to="/signup">Sign Up</Link>
             </div>
-        </>
+        </CenteredContainer>
     )
 }

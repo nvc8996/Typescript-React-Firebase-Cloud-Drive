@@ -1,37 +1,37 @@
-import React from 'react';
+// import React from 'react';
 // import logo from './logo.svg';
 // import './App.css';
-import { Container } from 'react-bootstrap';
 import { AuthProvider } from './contexts/AuthContext';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Login from './components/Login';
-import PrivateRoute from './components/PrivateRoute';
-import Dashboard from './components/DashBoard';
-import SignUp from './components/SignUp';
-import UpdateProfile from './components/UpdateProfile';
-import ResetPassword from './components/ResetPassword';
+import Login from './components/auth/Login';
+import Profile from './components/auth/Profile';
+import PrivateRoute from './components/auth/PrivateRoute';
+import SignUp from './components/auth/SignUp';
+import UpdateProfile from './components/auth/UpdateProfile';
+import ResetPassword from './components/auth/ResetPassword';
+import DashBoard from './components/drive/DashBoard';
 
 
 function App() {
   return (
-    <Container
-      className="d-flex align-items-center justify-content-center"
-      style={{ minHeight: "100vh" }}
-    >
-      <div className="w-100" style={{ maxWidth: "400px" }}>
-        <BrowserRouter>
-          <AuthProvider>
-            <Switch>
-              <PrivateRoute exact path="/" component={Dashboard} />
-              <PrivateRoute path="/update-profile" component={UpdateProfile} />
-              <Route path="/login" component={Login} />
-              <Route path="/signup" component={SignUp} />
-              <Route path="/forgot-password" component={ResetPassword} />
-            </Switch>
-          </AuthProvider>
-        </BrowserRouter>
-      </div>
-    </Container>
+      <BrowserRouter>
+        <AuthProvider>
+          <Switch>
+            {/* Drive */}
+            <PrivateRoute exact path='/' component={DashBoard}/>
+            <PrivateRoute exact path='/folder/:folderId' component={DashBoard}/>
+
+            {/* Profile */}
+            <PrivateRoute path="/profile" component={Profile} />
+            <PrivateRoute path="/update-profile" component={UpdateProfile} />
+
+            {/* Authentication */}
+            <Route path="/signup" component={SignUp} />
+            <Route path="/login" component={Login} />
+            <Route path="/forgot-password" component={ResetPassword} />
+          </Switch>
+        </AuthProvider>
+      </BrowserRouter>
   );
 }
 

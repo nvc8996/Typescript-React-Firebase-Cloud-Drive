@@ -1,7 +1,8 @@
 import React, { FormEventHandler, useRef, useState } from "react";
 import { Card, Form, Alert, Button } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
-import { useAuth } from "../contexts/AuthContext";
+import { useAuth } from "../../contexts/AuthContext";
+import CenteredContainer from "./CenteredContainer";
 
 export default function UpdateProfile() {
     const emailRef = useRef<HTMLInputElement>(null);
@@ -40,7 +41,7 @@ export default function UpdateProfile() {
                 
             Promise.all(promises)
                 .then(() => {
-                    history.push("/")
+                    history.push("/profile")
                 })
                 .catch((e) => {
                     setError("Failed to update: " + e.message)
@@ -55,7 +56,7 @@ export default function UpdateProfile() {
     }
 
     return (
-        <>
+        <CenteredContainer>
             <Card>
                 <Card.Body>
                 <h2 className="text-center mb-4 ">Sign Up</h2>
@@ -81,8 +82,8 @@ export default function UpdateProfile() {
                 </Card.Body>
             </Card>
             <div className="w-100 text-center mt-2">
-                <Link to="/">Cancel</Link>
+                <Link to="/profile">Cancel</Link>
             </div>
-        </>
+        </CenteredContainer>
     )
 }
