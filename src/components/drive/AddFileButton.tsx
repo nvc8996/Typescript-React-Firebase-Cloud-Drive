@@ -36,9 +36,11 @@ export default function AddFileButton({ currentFolder }: Props): ReactElement {
         const filePath = 
             currentFolder.id === "0"
                 ? file.name
-                :`${`${currentFolder.path.map(folder => folder.name).join('/')}/`}${currentFolder.name}/${file.name}`;
+                :`${`${[...(currentFolder.path.map(folder => folder.name)), ""].join('/')}`}${currentFolder.name}/${file.name}`;
+        
+        const fileRef = `files/${currentUser.uid}/${filePath}`;
 
-        const uploadTask = storage.ref(`files/${currentUser.uid}/${filePath}`).put(file);
+        const uploadTask = storage.ref(fileRef).put(file);
 
         uploadTask.on(
             "state_changed",
@@ -90,7 +92,8 @@ export default function AddFileButton({ currentFolder }: Props): ReactElement {
                                     name: file.name,
                                     createdAt: database.getCurrentTimestamp(),
                                     folderId: currentFolder.id,
-                                    userId: currentUser.uid
+                                    userId: currentUser.uid,
+                                    ref: fileRef
                                 })
                             }
                         })

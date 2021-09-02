@@ -30,7 +30,10 @@ export default function AddFolderButton({ currentFolder }: Props): ReactElement 
 
         if (!currentFolder) return;
 
-        let path: { id: string, name: string }[] = [...currentFolder.path, { id: currentFolder.id, name: currentFolder.name }];
+        let path: { id: string, name: string }[] = 
+            currentFolder.id === "0"
+                ? []
+                : [...currentFolder.path, { id: currentFolder.id, name: currentFolder.name }];
 
         // Create folder in database
         database.folders.add({
