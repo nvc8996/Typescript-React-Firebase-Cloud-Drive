@@ -12,6 +12,10 @@ export default function Login() {
     const [loading, setLoading] = useState(false);
     const history = useHistory();
 
+    setTimeout(() => {
+        emailRef.current?.focus();
+    })
+
     const handleSubmit: FormEventHandler<HTMLFormElement> = async (e: React.SyntheticEvent) => {
         e.preventDefault();
 

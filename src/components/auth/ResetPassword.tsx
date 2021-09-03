@@ -11,6 +11,10 @@ export default function ResetPassword() {
     const [loading, setLoading] = useState(false);
     const { resetPassword } = useAuth();
 
+    setTimeout(() => {
+        emailRef.current?.focus();
+    })
+
     const handleSubmit: FormEventHandler<HTMLFormElement> = async (e: React.SyntheticEvent) => {
         e.preventDefault();
 

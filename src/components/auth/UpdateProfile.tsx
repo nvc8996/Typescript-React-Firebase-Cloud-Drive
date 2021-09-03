@@ -12,6 +12,10 @@ export default function UpdateProfile() {
     const [loading, setLoading] = useState(false);
     const history = useHistory();
     const { currentUser, updatePassword, updateEmail } = useAuth();
+
+    setTimeout(() => {
+        passwordRef.current?.focus();   
+    });
     
     const handleSubmit: FormEventHandler<HTMLFormElement> = async (e: React.SyntheticEvent) => {
         e.preventDefault()

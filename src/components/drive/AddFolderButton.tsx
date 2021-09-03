@@ -1,6 +1,6 @@
 import { faFolderPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { FormEventHandler, ReactElement, useState } from 'react';
+import React, { FormEventHandler, ReactElement, useRef, useState } from 'react';
 import { Button, Form, Modal } from 'react-bootstrap';
 import { useAuth } from '../../contexts/AuthContext';
 import { database } from '../../firebase';
@@ -14,9 +14,13 @@ export default function AddFolderButton({ currentFolder }: Props): ReactElement 
     const [open, setOpen] = useState(false);
     const [name, setName] = useState('');
     const { currentUser } = useAuth();
+    const inputRef = useRef<HTMLInputElement|null>(null)
 
     function openModal() {
         setOpen(true);
+        setTimeout(() => {
+            inputRef.current?.focus();
+        });
     }
 
     function closeModal() {
@@ -25,8 +29,6 @@ export default function AddFolderButton({ currentFolder }: Props): ReactElement 
 
     const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
         e.preventDefault();
-        // console.log(currentFolder.id);
-        
 
         if (!currentFolder) return;
 
@@ -63,6 +65,7 @@ export default function AddFolderButton({ currentFolder }: Props): ReactElement 
                                 required
                                 value={name}
                                 onChange={e => setName(e.target.value)}
+                                ref={inputRef}
                             />
                         </Form.Group>
                     </Modal.Body>

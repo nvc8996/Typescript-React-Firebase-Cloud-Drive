@@ -13,6 +13,10 @@ export default function SignUp() {
     const [loading, setLoading] = useState(false)
     const history = useHistory()
 
+    setTimeout(() => {
+        emailRef.current?.focus();   
+    });
+
     const handleSubmit: FormEventHandler<HTMLFormElement> = async (e: React.SyntheticEvent) => {
         e.preventDefault();
 
