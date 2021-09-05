@@ -3,6 +3,7 @@ import { Alert, Button, Card, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import CenteredContainer from "./CenteredContainer";
+import { Helmet } from "react-helmet";
 
 export default function ResetPassword() {
     const emailRef = useRef<HTMLInputElement>(null);
@@ -34,6 +35,9 @@ export default function ResetPassword() {
 
     return (
         <CenteredContainer>
+            <Helmet>
+                <title>Reset Password | Google Drive Clone with Firebase</title>
+            </Helmet>
             <Card>
                 <Card.Body>
                     <h2 className="text-center mb-4">Password Reset</h2>

@@ -1,5 +1,6 @@
 import React, { ReactElement } from 'react'
 import { Container } from 'react-bootstrap'
+import { Helmet } from 'react-helmet'
 import { useLocation, useParams } from 'react-router-dom'
 import { ROOT_FOLDER, useFolder } from '../../hooks/useFolder'
 import AddFileButton from './AddFileButton'
@@ -30,6 +31,9 @@ export default function DashBoard({ children }: Props): ReactElement {
     const { folder, childFolders, childFiles } = useFolder(folderId, set_state.folder);
     return (
         <>
+          <Helmet>
+              <title>Dashboard | Google Drive Clone with Firebase</title>
+          </Helmet>
           <NavBar/>
           <br/>
           <Container fluid>

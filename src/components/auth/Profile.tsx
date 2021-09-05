@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Alert, Button, Card } from "react-bootstrap";
+import { Helmet } from "react-helmet";
 import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import CenteredContainer from "./CenteredContainer";
@@ -22,6 +23,9 @@ export default function Profile() {
 
     return (
         <CenteredContainer>
+            <Helmet>
+                <title>Profile | Google Drive Clone with Firebase</title>
+            </Helmet>
             <Card>
                 <Card.Body>
                     <h2 className="text-center mb-4">Profile</h2>

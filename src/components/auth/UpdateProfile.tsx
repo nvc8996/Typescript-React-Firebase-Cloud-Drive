@@ -1,5 +1,6 @@
 import React, { FormEventHandler, useRef, useState } from "react";
 import { Card, Form, Alert, Button } from "react-bootstrap";
+import { Helmet } from "react-helmet";
 import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import CenteredContainer from "./CenteredContainer";
@@ -61,6 +62,9 @@ export default function UpdateProfile() {
 
     return (
         <CenteredContainer>
+            <Helmet>
+                <title>Update Profile | Google Drive Clone with Firebase</title>
+            </Helmet>
             <Card>
                 <Card.Body>
                 <h2 className="text-center mb-4 ">Sign Up</h2>

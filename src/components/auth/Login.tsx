@@ -1,5 +1,6 @@
 import React, { FormEventHandler, useRef, useState } from "react";
 import { Alert, Button, Card, Form } from "react-bootstrap";
+import { Helmet } from "react-helmet";
 import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import CenteredContainer from "./CenteredContainer";
@@ -40,6 +41,9 @@ export default function Login() {
 
     return (
         <CenteredContainer>
+            <Helmet>
+                <title>Log In | Google Drive Clone with Firebase</title>
+            </Helmet>
             <Card>
                 <Card.Body>
                     <h2 className="text-center mb-4 ">Log In</h2>

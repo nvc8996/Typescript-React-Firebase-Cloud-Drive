@@ -1,5 +1,6 @@
 import { FormEventHandler, useRef, useState } from "react";
 import { Alert, Button, Card, Form } from "react-bootstrap";
+import { Helmet } from "react-helmet";
 import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import CenteredContainer from "./CenteredContainer";
@@ -45,6 +46,9 @@ export default function SignUp() {
 
     return (
         <CenteredContainer>
+            <Helmet>
+                <title>Sign Up | Google Drive Clone with Firebase</title>
+            </Helmet>
             <Card>
                 <Card.Body>
                 <h2 className="text-center mb-4 ">Sign Up</h2>

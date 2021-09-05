@@ -10,10 +10,15 @@ import SignUp from './components/auth/SignUp';
 import UpdateProfile from './components/auth/UpdateProfile';
 import ResetPassword from './components/auth/ResetPassword';
 import DashBoard from './components/drive/DashBoard';
+import { Helmet } from 'react-helmet';
 
 
 function App() {
   return (
+    <>
+      <Helmet>
+        <title>Google Drive Clone with Firebase</title>
+      </Helmet>
       <BrowserRouter>
         <AuthProvider>
           <Switch>
@@ -32,6 +37,7 @@ function App() {
           </Switch>
         </AuthProvider>
       </BrowserRouter>
+    </>
   );
 }
 
